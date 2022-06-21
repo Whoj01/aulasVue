@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+       <p @click="onClick('p', $event)">curso de VUEjs
+        <button @click.stop="onClick('button', $event)">Clique</button> <!--o . indica qual modificador de evento eu quero usar, no caso o stop que tem a mesma funcao que o event.stopPropagation() -->
+       </p>
+        
+       <form @submit.prevent=""> <!--o @ pode ser usado de abreviação do v-on:, nesse caso estou passando o evento que o form vai levar que é o submit e .prevent que previne o comportamento default dele -->
+         <input type="text">
+         <button type="submit">enviar sem modificador</button>
+       </form>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   
+                  }
+                },
+            methods: {
+               onClick(alvo, event){
+                /*event.stopPropagation() mantem somente o click para o elemento filho e nao mais pai e filho juntos*/
+                console.log(event.type, ':',  alvo)
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

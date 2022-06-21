@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+                                                    <!--PARA ACESSAR O EVENT COM OUTRAS PARAMETROS É NECESSARIO FAZER COM $ NO COMECO DO EVENT-->
+        <input v-on:blur="exibirNome('Meu nome é: ', $event)" v-model="nome"> <!--o v-model permite passar de forma mais facil o elemento para o vue fazendo o data binding-->
+        <p> {{nomemostrado}}</p> 
+
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   nomemostrado:'',
+                   nome: '',
+
+                  }
+                },
+            methods: {
+               exibirNome(nome){
+                this.nomemostrado = nome + this.nome
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

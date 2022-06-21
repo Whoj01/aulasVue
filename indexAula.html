@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-once>{{nome}}</p> <!-- o V once desabilita novas renderizaçoes, sem atualizar se houver mudanças nele, seus elementos filhos serao considerados elementos estaticos-->
+        <p> Meu nome inteiro é {{getName()}}</p>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   nome: 'josue Dias',
+                  }
+                },
+            methods: {
+               getName(){
+                 this.nome = 'Josue'
+                 return this.nome
+               },
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

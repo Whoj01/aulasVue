@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <p>instrutor: <span v-text="instrutor"></span>, {{NomeDoInstrutor()}}</p> <!-- Uma funcao pode ser passada na interpolação se ele tiver algum dado que possa ser exibido em html-->
+        <a v-bind:href="docs"  >VueJs</a> <!-- v-bind faz aquele atributo que passarmos ser assistido pelo vue e poder vincular dados com ele-->
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   curso: 'vuejs',
+                   instrutor: 'plinio neves',
+                   docs: 'https://vuejs.org'
+                  }
+                },
+            methods: {
+                NomeDoInstrutor(){
+                    return this.instrutor /* o this acessa o data por causa do proxy que o vue faz, facilitando acessar dados dentro dele*/
+                }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

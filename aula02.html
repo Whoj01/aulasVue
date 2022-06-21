@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{curso}}</p>
+        <p v-html="curso"></p> <!--Possibilita tags html serem renderizadas, ja que de padrao o vue nao aceita elas dentro do data-->
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   curso: 'Curso de <span style="color:red ">VueJs</span>',
+                  }
+                },
+            methods: {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

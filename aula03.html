@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="clique(-1)">diminuir</button>
+        <button @click="clique(1)">aumentar</button> <!--V-on passa para o vue o que vai ser assistido qualquer evento, no caso os cliques-->
+        <p> esse botao foi clicado {{cliques}} vezes</p> 
+
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   cliques: 0,
+                  }
+                },
+            methods: {
+               clique(n){
+                  this.cliques += n
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>
