@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <style>#app div {
+        display: inline-block;
+        margin-right: 10px;
+        background-color: gray;
+    }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div style="width: 200px; height:200px;" :style="{backgroundColor: cor, height: tamanho + 'px', width: largura + 'px'}"></div> 
+        <div style="width: 200px; height:200px;" :style="EstilosCss"></div> 
+        <div style="width: 200px; height:200px;" :style="[EstilosCss, {
+            borderRadius: '50%',
+            border: '2px solid black',
+            backgroundColor: 'lime'
+        }]"></div> 
+
+
+        <input v-model="cor" placeholder="cor">
+        <input v-model.number="tamanho" placeholder="tamanho">
+        <input v-model.number="largura" placeholder="tamanho">
+
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   cor: '',
+                   tamanho: 200,
+                   largura: 200,
+                  }
+                },
+            methods: {
+               
+            },
+            computed: {
+                EstilosCss(){
+                    return {
+                        backgroundColor: this.cor,
+                        height: (this.tamanho + 10) + 'px',
+                        width: 100 + 'px',
+                    }
+                }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

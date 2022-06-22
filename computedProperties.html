@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        
+        <p>{{curso}} => {{curso.split('').reverse().join('')}}</p>
+        <!--o template do vue aceita operacoes do javascript no mieo dles mas deve ser utilizado apenas para coisas simples-->
+        <p>{{curso}} => {{cursoInvertido}}</p>
+
+        <input @keyup.enter="mudarNomeDoCurso" v-model="mudar">
+    </div>
+
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   curso: 'VueJs',
+                   mudar: '',
+                  }
+                },
+            computed: {
+                cursoInvertido(){
+                    return this.curso.split('').reverse().join('')
+                }
+            },
+            methods:{
+                mudarNomeDoCurso(){
+                    this.curso = this.mudar
+                }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

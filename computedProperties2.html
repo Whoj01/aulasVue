@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        
+        <p> Nome Original: {{curso}}</p>
+        <br>
+        <p>Nome Invertido (computed): {{cursoInvertidoComputed}}</p> <!--Computed properties sempre vai se atulizada pelo proprio vue, trabalha com dependencias, ela depende da prorpiedade curso para funcionar-->
+        <br>
+        <p>Nome Invertido (method): {{cursoInvertidoMethod()}}</p>
+        <br>
+        <p>Autor: {{nomeDoAutorInteiro ? 'Josue Dias' : 'Josue'}}</p>
+        <br>
+        <button @click="nomeDoAutorInteiro = !nomeDoAutorInteiro">Alterar nome do autor</button>
+        <br>
+        <input @keyup.enter="mudarNomeDoCurso" v-model="mudar">
+    </div>
+
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   curso: 'curso VueJs',
+                   mudar: '',
+                   nomeDoAutorInteiro: false
+                  }
+                },
+            computed: {
+                cursoInvertidoComputed(){
+                    console.log('computed!')
+                    return this.curso.split('').reverse().join('')
+                }
+            },
+            methods:{
+                mudarNomeDoCurso(){
+                    this.curso = this.mudar
+                },
+                cursoInvertidoMethod(){
+                    console.log('method!')
+                    return this.curso.split('').reverse().join('') // o medo e chamado em cada nova renderizacao, diminuindo a perfomance
+                }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

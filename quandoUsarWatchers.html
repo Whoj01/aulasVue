@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <!--É utilizado um watcher quando é preciso fazer um codigo assincrono que depende de um tempo para ser executado, ja que o computed precisa de um codigo sincorno, que tenha aresposta imediata
+        -->
+        <p>{{nomeCompleto}}</p>
+        <button @click="alterarNomes">Alterar nomes</button>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                    nomeCompleto: 'Josue Dias'
+                  }
+                },
+            watch:{
+                nomeCompleto(novo, antigo){
+                    var self = this;
+                   setTimeout(function(){ // e´uma funcao closure, entao o this nao acessa o data, mas o proprio escopo da funcao
+                    self.nomeCompleto = antigo;
+                   }, 3000) // executa depois de 3 segundos, voltando ao estado inicial
+                }
+            },
+            methods: {
+               alterarNomes(){
+                this.nomeCompleto = 'Dias Josue'
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

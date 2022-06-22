@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <a v-bind:href="docs">VueJs</a>
+        <br>
+        <button @click="onClick">clique</button>
+        
+        <hr>
+
+        <a :href="docs">VueJs</a> <!--:: e a abreviacao para o v-bind como v-bind:key pode ser :key=''-->
+        <br>
+        <button @click="onClick">clique</button> 
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                    docs: 'https://vuejs.org'
+                  }
+                },
+            methods: {
+               onClick(){
+                 console.log(event.type)
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

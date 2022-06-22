@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <style>
+        .caixa {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            margin-right: 10px;
+            background-color: aquamarine;
+        }
+
+        .coral{
+            background-color: coral !important;
+        }
+
+        .verde {
+            background-color: lightgreen;
+        }
+
+        .azul {
+            background-color: blue;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="caixa" :class="{
+            coral: aplicarEstilo
+        }"  @click="mudarClasse"></div> <!-- se for necessario outra letra é preciso envolver em '' para o vue entender-->
+
+        <div class="caixa" :class="nomeDaClasse"></div> <!-- usando nome das classes para aplicar, fazendo a ligaçao pelo input-->
+
+        <input v-model='nomeDaClasse' placeholder="coloque o nome da classe" >
+
+        <div class="caixa" :class="classesCss" @click="mudarClasse"></div>
+
+        <div class="caixa" :class="['circle', nomeDaClasse, {verde: aplicarEstilo}]"></div>
+
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   aplicarEstilo: false,
+                   nomeDaClasse: '',
+                  }
+                },
+            computed: {
+               classesCss(){  //utilizado para aplicar o objeto de classes mais facilmente com mudancas de algum estado do data
+                return {
+                    azul: this.aplicarEstilo,
+                    circle: this.aplicarEstilo,
+                    verde: !this.aplicarEstilo
+
+                }
+               }
+            },
+            methods: {
+               mudarClasse(){
+                return this.aplicarEstilo = !this.aplicarEstilo
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

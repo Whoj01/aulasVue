@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <!--por padrao o computed so tem o getter que pega uma funcao, ele nao consegue settar algo-->
+        <p>{{nomeCompleto}}</p>
+        <input @keyup.enter="alterarNome" v-model="mudar">
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   primeiroNome: 'Josue',
+                   segundoNome: 'Dias',
+                   mudar: ''
+                  }
+                },
+            computed:{
+                nomeCompleto: {
+                    get(){
+                        return this.primeiroNome + ' ' + this.segundoNome
+                    }, //é um getter, o padrao do cumputed
+                    set(novoNome){
+                        var nomes = novoNome.split(' ')
+                        this.primeiroNome = nomes[0]
+                        this.segundoNome = nomes[nomes.length - 1]
+                    } //é um setter que precisamos para colocar uma variavel, agora setamos um valor que nao existe com o computd
+                }
+                // adicionando setter para o computed
+            },
+            methods: {
+               alterarNome(event){
+                this.nomeCompleto = this.mudar
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

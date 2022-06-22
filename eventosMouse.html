@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="onClick">Botao esquerdo</button>
+        <button @click.middle="onClick">Botao do meio</button> <!--Usando modificador de eventos apenas o botao do meio vai ser ouvido-->
+        <button @click.right="onClick">Botao direita</button> <!--Usando modificador de eventos apenas o botao direito vai ser ouvido-->
+        <button @click.right.prevent="onClick">Botao direita</button> <!--sem abrir o menu-->
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                  
+                  }
+                },
+            methods: {
+               onClick(event){
+                 console.log(`botao do mouse ${event.button}`)
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

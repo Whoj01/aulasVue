@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{nomeCompleto}}</p>
+        <button @click="alterarNomes">Alterar nomes</button>
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   primeiroNome: 'Josue',
+                   segundoNome: 'Dias',
+                   nomeInteiro: 'Josue Dias'
+                  }
+                },
+
+            computed: {
+                nomeCompleto(){
+                    return this.primeiroNome + ' ' + this.segundoNome
+                }
+            },
+            /*watch: {
+                primeiroNome(novo, antigo){      /* aceita receber o novo nome que foi passado e o estado antigo que estava gurdado      
+                    this.nomeInteiro = novo + ' ' + this.segundoNome
+                },
+                segundoNome(novo, antigo){
+                    this.nomeInteiro = this.primeiroNome + ' ' + novo
+                }
+            },*/
+            
+            methods: {
+                alterarNomes() {
+                    this.primeiroNome = 'Dias'
+                    this.segundoNome = 'Josué'
+                }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

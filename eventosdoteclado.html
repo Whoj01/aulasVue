@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <input @keyup="onKey" placeholder="qualquer tecla">
+        <br>
+        <input @keyup.enter="onKey" placeholder="tecla enter"> <!--Usando o .enter que vai ouvir essa tecla apenas-->
+        <br>
+        <input @keyup.enter.esc="onKey" placeholder="tecla enter||esc"> <!--Usando o .enter.esq vai ser possoiver ouvir ou enter ou esq-->
+        <br>
+        <input @keyup.arrow-up="onKey" placeholder="tecla arrowUp"> 
+        <br>
+        <input @keyup.ctrl.enter.exact="onKey" placeholder="tecla enter e control"> <!--as teclas necessarias para apertar sao ctrl + enter juntas, sao teclas modificadoras de sistema, 
+         o exact so permite se apenas aquelas teclas forem apertadas no momento-->
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        
+
+       createApp({ 
+            
+            data() {
+                return {
+                   
+                  }
+                },
+            methods: {
+               onKey(event){
+                 console.log(`tecla apertada ${event.key}`)
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>
