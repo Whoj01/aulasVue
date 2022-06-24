@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+      <ul>
+        <li>Olá VueJs</li>
+        <li>Item 1</li>
+        <template v-if="mostrar"> <!--o template nao é renderizado no html final apenas o os itens dentro dela, é um recurso especial do vue-->
+         <li>item 2</li>
+         <li>item 3</li>
+        </template>
+      </ul>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                  mostrar: true
+                  }
+                },
+            methods: {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

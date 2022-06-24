@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="nota === 'A' ">Parabens, voce tirou A</p>
+        <p v-else-if="nota === 'B'">voce tirou um B, mas pode melhoar</p>
+        <p v-else-if="nota === 'C'">voce precisa melhorarar, sua nota C</p>
+        <p v-else>Sua nota ainda nao foi postada</p>
+        <input v-model="nota" >
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   nota: '',
+                  }
+                },
+            methods: {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

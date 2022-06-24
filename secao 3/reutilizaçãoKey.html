@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="toggle = !toggle">toggle</button>
+        <br>
+        <template v-if="toggle">
+          <label>Login</label>
+          <input placeholder="Login">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Email">
+        </template>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   toggle: true
+                  }
+                },
+            methods: {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        .separador{
+            list-style: none;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <p>produtos</p>
+       <ul>
+        <template v-for="tarefa in tarefas">
+            <li  :key="tarefa.id" v-if="!tarefa.completa"> <!--Nao é nada recomendado criar listar com vfor e vif juntos, poque nao consegue acessar um dado nele-->
+                {{tarefa.nome}} 
+            </li>
+        </template>
+       </ul>
+
+       <ul v-if="tarefasIncompletas.length">
+            <li v-for="tarefa in tarefasIncompletas" :key="tarefa.id"> <!--desse modo usando a computed property o item nao é renderizado-->
+                {{tarefa.nome}} 
+            </li>
+       </ul>
+       <p v-else> Nenhuma tarefa registrada</p>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                    tarefas: [
+                    {id:1, nome: 'aprender HTML', completa: true},
+                    {id:2, nome: 'aprender Css', completa: false},
+                    {id:3, nome: 'aprender JS', completa: false},
+                    {id:4, nome: 'aprender Vue', completa: false},
+                   ]
+                  }
+                },
+            computed: {
+              tarefasIncompletas(novo, antigo){
+                return this.tarefas.filter((tarefa) => { //funciona como um foreach 
+                    return !tarefa.completa // esta retornando apenas os tarefas.completa false
+                }) 
+              }
+            },
+
+            created() {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

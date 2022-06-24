@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="mostrar">Ola vueJs</p> <!--o v-if se for true renderiza o elemento, e isso ja fica subentendido nele-->
+        <p  v-else>ate VueJs</p>  <!--o v else para funcionar tem q ser seguid diretamente do-->
+        <button @click="mostrar = !mostrar"> alternar valor</button>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   mostrar: true,
+                  }
+                },
+            methods: {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

@@ -19,12 +19,24 @@
        createApp({ 
             data() {
                 return {
+                    primeiroNome: 'josue',
+                    segundoNome: 'dias',
+
                     nomeCompleto: 'Josue Dias'
                   }
                 },
+
+            /*computed: {
+               nomeCompleto(novo, antigo){
+                  var self = this
+                  setTimeout(function(){
+                    self.nomeCompleto = antigo
+                  }, 3000)
+               }
+            },*/
             watch:{
                 nomeCompleto(novo, antigo){
-                    var self = this;
+                    var self = this; // para acessar o this fazemos isso
                    setTimeout(function(){ // e´uma funcao closure, entao o this nao acessa o data, mas o proprio escopo da funcao
                     self.nomeCompleto = antigo;
                    }, 3000) // executa depois de 3 segundos, voltando ao estado inicial

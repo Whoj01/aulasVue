@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        .separador{
+            list-style: none;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <p>produtos</p>
+       <ul> 
+        <template v-for="produto in produtos">
+            <li>{{produto.nome}}</li>
+            <li class="separador"></li>
+        </template>
+       </ul>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   produtos: [
+                    {id:1, nome: 'monitor'},
+                    {id:2, nome: 'teclado'},
+                    {id:3, nome: 'mouse'},
+                    {id:4, nome: 'processador'},
+                   ]
+                  }
+                },
+            methods: {
+               addProduto(){
+                    var id = this.produtos.length + 1
+                    this.produtos.push({id: id, nome: 'Produto' + id})  
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

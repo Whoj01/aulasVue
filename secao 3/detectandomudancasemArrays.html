@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+       <p>produtos</p>
+       <ul>
+        <li v-for="produto in produtos" :key="produto.id">
+            {{produto.id}} :{{produto.nome}}
+        </li>
+       </ul>
+
+       <button @click="addProduto">add</button>
+       <button @click="produtos = produtos.slice(0, 4)">subistituir array</button>
+       <button @click="subistituirItem">substituir</button>
+       
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                   produtos: [
+                    {id:1, nome: 'monitor'},
+                    {id:2, nome: 'teclado'},
+                    {id:3, nome: 'mouse'},
+                    {id:4, nome: 'processador'},
+                   ]
+                  }
+                },
+            methods: {
+               addProduto(){
+                    var id = this.produtos.length + 1
+                    this.produtos.push({id: id, nome: 'Produto' + id})  
+               },
+               subistituirItem(){
+                    var tamanho = this.produtos.length
+                    var indice = Math.round( tamanho / 2)
+                    var novoProduto = {id: tamanho + 1, nome: 'Produto' + tamanho + 1} 
+                   // this.produtos[indice] = novoProduto nao reativo
+                   this.$set(this.produtos, indice, novoProduto)  // passa o item que eu quero mudar, o indice e o novo valor
+               }
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

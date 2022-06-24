@@ -1,0 +1,54 @@
+0<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Produtos</h1>
+        <ul>
+            <li v-for="valor in produto"> <!--Acessa diretamente o valor das chaves--> 
+                {{valor}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(valor, chave) in produto">  <!--Acessa primeiro o valor e depois a chave--> 
+                {{chave}}:{{valor}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(valor, chave, index) in produto">  <!--Acessa primeiro o valor e depois a chave e a 3 opcao caso seja um objeto, e um indice--> 
+               {{index}}.{{chave}}:{{valor}}
+            </li>
+        </ul>
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                    texto: 'produto',
+                    produto: {
+                    id: 1,
+                    nome: 'teclado',
+                    marca: 'ozzone',
+                    valor: 100
+                   },
+                  }
+                },
+            methods: {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>

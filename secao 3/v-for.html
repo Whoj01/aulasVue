@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Produtos</h1>
+        <ul>
+            <li v-for="(produto, index) in produtos"> <!--para acessar o indeci do iten que esta sendo iterado é necessario () e passar o nome dentro, como um foreach no js-->
+                {{texto}}: {{produto}}, {{index}}
+            </li>
+        </ul>
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+       createApp({ 
+            data() {
+                return {
+                    texto: 'produto',
+                   produtos: [
+                    'Mouse',
+                    'teclado',
+                    'monitor'
+                   ],
+                  }
+                },
+            methods: {
+               
+            }
+        }).mount('#app')
+
+        
+    </script>
+</body>
+</html>
